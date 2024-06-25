@@ -9,4 +9,6 @@ app.use(express.urlencoded({ extended: true }));
 
 sequelize.sync().then(() => {
   app.listen(PORT, () => console.log('Now listening'));
-});
+}).catch((error) => {
+    console.error('Not Connecting to my DB!', error);
+    });

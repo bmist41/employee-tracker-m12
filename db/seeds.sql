@@ -1,4 +1,4 @@
-INSERT INTO department (dep_name)
+INSERT INTO departments (dep_name)
 VALUES ('Math'),
        ('Science'),
         ('English'),
@@ -10,7 +10,7 @@ VALUES ('Math'),
         ('Foreign Language');
 
 
-INSERT INTO role (title, salary, department)
+INSERT INTO roles (title, salary, departments)
 VALUES ('Math Teacher', 75000, 1),
        ('Science Teacher', 70000, 2),
        ('English Teacher', 50000, 3),
@@ -21,7 +21,7 @@ VALUES ('Math Teacher', 75000, 1),
        ('Computer Science Teacher', 100000, 8),
        ('Foreign Language Teacher', 50000, 9);
 
-INSERT INTO employee (first_name, last_name, role_id, manager_id)
+INSERT INTO employees (first_name, last_name, role_id, manager_id)
 VALUES ('John', 'Stevens', 1, NULL),
        ('Jane', 'Fram', 2, 1),
        ('Jim', 'Dole', 3, 1),
