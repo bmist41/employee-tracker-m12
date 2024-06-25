@@ -1,14 +1,5 @@
-const express = require('express');
-const sequelize = require('./config/connection');
+const CLI = require('./db/cli.js');
 
-const app = express();
-const PORT = process.env.PORT || 3001;
+const cli = new CLI();
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-
-sequelize.sync().then(() => {
-  app.listen(PORT, () => console.log('Now listening'));
-}).catch((error) => {
-    console.error('Not Connecting to my DB!', error);
-    });
+cli.run();

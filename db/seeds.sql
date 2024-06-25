@@ -10,7 +10,7 @@ VALUES ('Math'),
         ('Foreign Language');
 
 
-INSERT INTO roles (title, salary, departments)
+INSERT INTO roles (title, salary, department_id)
 VALUES ('Math Teacher', 75000, 1),
        ('Science Teacher', 70000, 2),
        ('English Teacher', 50000, 3),
@@ -31,3 +31,7 @@ VALUES ('John', 'Stevens', 1, NULL),
        ('Jared', 'Macbeth', 7, 1),
        ('Jasmine', 'Fraj', 8, 1),
        ('Jared', 'Doe', 9, 1);
+
+SELECT * FROM departments;
+SELECT * FROM roles;
+SELECT * FROM employees;

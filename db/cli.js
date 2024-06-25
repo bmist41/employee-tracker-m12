@@ -1,5 +1,5 @@
 const inquirer = require('inquirer');
-const sequelize = require('../config/connection'); // Importing the connection object
+const pool = require('../config/connection'); // Importing the connection object
 
 class CLI {
     constructor() {
@@ -46,17 +46,17 @@ class CLI {
     }
 
     async viewDepartments() {
-        const { rows } = await sequelize.query('SELECT * FROM departments');
+        const { rows } = await pool.query('SELECT * FROM departments');
         console.log(rows);
     }
 
     async viewRoles() {
-        const { rows } = await sequelize.query('SELECT * FROM roles');
+        const { rows } = await pool.query('SELECT * FROM roles');
         console.log(rows);
     }
 
     async viewEmployees() {
-        const { rows } = await sequelize.query('SELECT * FROM employees');
+        const { rows } = await pool.query('SELECT * FROM employees');
         console.log(rows);
     }
 
@@ -68,7 +68,7 @@ class CLI {
                 message: 'Please enter the name of the department you would like to add',
             },
         ]);
-        const { rows } = await sequelize.query('INSERT INTO departments (name) VALUES ($1) RETURNING *', [departmentAnswers.department]);
+        const { rows } = await pool.query('INSERT INTO departments (dep_name) VALUES ($1) RETURNING *', [departmentAnswers.department]);
         console.log(rows);
     }
 
@@ -90,7 +90,7 @@ class CLI {
                 message: 'Please enter the department ID of the new role ',
             },
         ]);
-        const { rows } = await sequelize.query('INSERT INTO roles (title, salary, department_id) VALUES ($1, $2, $3) RETURNING *', [roleAnswers.title, roleAnswers.salary, roleAnswers.department_id]);
+        const { rows } = await pool.query('INSERT INTO roles (title, salary, department_id) VALUES ($1, $2, $3) RETURNING *', [roleAnswers.title, roleAnswers.salary, roleAnswers.department_id]);
         console.log(rows);
     }
 
@@ -117,7 +117,7 @@ class CLI {
                 message: 'Please enter the new employees manager ID ',
             },
         ]);
-        const { rows } = await sequelize.query('INSERT INTO employees (first_name, last_name, role_id, manager_id) VALUES ($1, $2, $3, $4) RETURNING *', [employeeAnswers.first_name, employeeAnswers.last_name, employeeAnswers.role_id, employeeAnswers.manager_id]);
+        const { rows } = await pool.query('INSERT INTO employees (first_name, last_name, role_id, manager_id) VALUES ($1, $2, $3, $4) RETURNING *', [employeeAnswers.first_name, employeeAnswers.last_name, employeeAnswers.role_id, employeeAnswers.manager_id]);
         console.log(rows);
     }
 
@@ -134,7 +134,7 @@ class CLI {
                 message: 'Please enter the updated role ID',
             },
         ]);
-        const { rows } = await sequelize.query('UPDATE employees SET role_id = $1 WHERE id = $2 RETURNING *', [updateAnswers.role_id, updateAnswers.employee_id]);
+        const { rows } = await pool.query('UPDATE employees SET role_id = $1 WHERE id = $2 RETURNING *', [updateAnswers.role_id, updateAnswers.employee_id]);
         console.log(rows);
     }
 }
