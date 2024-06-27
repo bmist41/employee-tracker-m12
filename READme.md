@@ -9,15 +9,14 @@
 ## Description
 
 
-Link to deployed site:
-
-
+Demo Video:
+https://drive.google.com/file/d/1WAazFNwDmwiRYlOKojnz3QTZ6fh3cZIf/view?usp=sharing
 
 ## Usage
 To use the application, follow the steps provided below.
 1. Clone the repository to your local machine.
 2. Initialize NPM 
-3. Install express
+3. Install dependancies
 4. Start the server [node server.js]
 
 
